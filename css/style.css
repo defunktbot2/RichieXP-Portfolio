@@ -1,0 +1,287 @@
+/* General Styles */
+body {
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars */
+    font-family: "XP", sans-serif; /* Using XP font */
+    background-color: hsl(188, 37%, 49%); /* You can adjust this */
+    color: #000; /* Change text color to match XP */
+    cursor: url('assets/cursor.png'), auto; /* Custom cursor */
+}
+
+a {
+    cursor: url('assets/cursor-hand.png'), auto; /* Custom cursor */
+}
+
+button {
+    cursor: url('assets/cursor-hand.png'), auto; /* Custom cursor */
+}
+
+/* Pixelation (Important!) */
+body, #desktop, .window-content {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Desktop */
+#desktop {
+    background: url('assets/Bliss_Wallpaper.jpg') no-repeat center center fixed;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* Start Button */
+#start-button {
+    background-image: url('assets/XP_Enhanced_Start_Button.png'); /* Path to your image */
+    background-size: contain; /* Ensure the image fits the button */
+    background-repeat: no-repeat; /* Avoid repeating the image */
+    width: 100px; /* Set width */
+    height: 100%; /* Set height */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer on hover */
+    position: relative; /* Position for dropdown */
+}
+
+#start-button:hover {
+    background-image: url('assets/XP_Enhanced_Start_Button_Hover.png'); /* Hover image */
+    box-shadow: none;
+}
+
+#start-button:active {
+    background-image: url('assets/XP_Enhanced_Start_Button_Active.png'); /* Active image */
+    box-shadow: none;
+}
+
+/* Start Menu */
+#start-menu {
+    position: absolute;
+    bottom: 40px; /* Adjust as needed to attach to the taskbar */
+    background: #2157d5; /* Change background color */
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: 150px; /* Set a fixed width for the menu */
+}
+
+#start-menu.hidden {
+    display: none; /* Hide the menu by default */
+}
+
+#start-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#start-menu li {
+    padding: 10px;
+    cursor: pointer;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    color: white;
+}
+
+#start-menu li:hover {
+    background-color: #d0d0d0; /* Highlight on hover */
+    color: #000
+}
+
+#start-menu img {
+    width: 16px; /* Set icon size */
+    height: 16px;
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Taskbar */
+#taskbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px; /* Adjust height for visibility */
+    background-color: #2157d5; /* Taskbar background color */
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    padding: 0px; /* No padding */
+}
+
+.open-windows {
+    display: flex; /* Flexbox for horizontal stacking */
+    flex-grow: 1; /* Allow this section to grow */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.taskbar-icon {
+    padding: 5px 10px;
+    background-color: #3b80f7; /* Light background for open windows */
+    border: 1px solid #aaa; /* Border for separation */
+    border-radius: 3px; /* Slightly rounded corners */
+    margin-right: 5px; /* Space between items */
+    display: flex; /* Horizontal layout for content */
+    align-items: center; /* Center content vertically */
+    color: white; /* Text color */
+}
+
+.taskbar-close {
+    margin-left: 5px; /* Space between title and close button */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.taskbar-icon:hover {
+    background-color: #d0d0d0; /* Darker background on hover */
+}
+
+/* Task Item */
+.task-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: rgba(70, 70, 70, 0.8);
+    color: white;
+    margin-right: 5px;
+    display: flex; /* Horizontal layout */
+    align-items: center;
+}
+
+.task-item button {
+    margin-left: 5px; /* Space between text and close button */
+    background: transparent; /* Transparent background for close button */
+    border: none; /* Remove default button border */
+    color: white; /* Close button color */
+    cursor: pointer; /* Pointer cursor for close button */
+}
+
+.task-item:hover {
+    background-color: rgba(100, 100, 100, 0.9); /* Highlight on hover */
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.desktop-icons .icon span {
+    color: white;
+    text-shadow: #000 1px 1px 2px; /* Text shadow for better visibility */
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.icon img {
+    width: 48px; /* Pixelated icon size */
+    height: 48px;
+    image-rendering: pixelated; /* Ensure pixelation */
+}
+
+.icon span {
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Window */
+.window {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 400px;
+    height: 600px;
+    background-color: #ddd;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Ensure windows are above desktop */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.window-header {
+    background-color: #aaa;
+    color: #000;
+    padding: 5px;
+    cursor: grab;
+    display: flex;
+    justify-content: space-between; /* Aligns title and controls */
+    align-items: center; /* Centers items vertically */
+    overflow: hidden;
+}
+
+.resize-handle {
+    width: 10px; /* Width of the handle */
+    height: 10px; /* Height of the handle */
+    background-color: transparent; /* Make it visible; can use a color or a background image */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: nwse-resize; /* Cursor style for resizing */
+}
+
+.window-title {
+    font-size: 12px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 5px; /* Space between buttons */
+}
+
+.window-controls span {
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.window-content {
+    padding: 10px;
+    font-size: 12px;
+    overflow: hidden; /* Enable scrolling */
+    height: calc(100% - 30px); /* Adjust for header height */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.window-body {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    padding: 10px; /* Add padding around the content */
+    height: calc(100% - 30px); /* Adjust height */
+}
+
+.window-body h1 {
+    font-size: 36px;
+}
+
+.window-body h2 {
+    font-size: 24px;
+}
+
+.window-body img {
+    width: 100px; /* Set a width for your image */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below the image */
+}
+
+.window-body p {
+    margin: 0; /* Remove default margin */
+    word-wrap: break-word; /* Ensure long words wrap */
+    overflow-wrap: break-word; /* Additional wrapping for long words */
+    white-space: normal; /* Allow text to wrap */
+}
+
+/* Contact Form */
+#message {
+    width: 200px; /* Make it full width */
+    height: 100px; /* Set a taller height */
+    padding: 10px; /* Add some padding */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 4px; /* Optional: rounded corners */
+    resize: none; /* Prevent resizing */
+}
