@@ -80,6 +80,8 @@ body, #desktop, .window-content {
     display: flex; /* Use flexbox for alignment */
     align-items: center; /* Center items vertically */
     color: white;
+    user-select: none; /* Prevent text selection */
+
 }
 
 #start-menu li:hover {
@@ -123,13 +125,16 @@ body, #desktop, .window-content {
     color: white; /* Text color */
 }
 
-.taskbar-close {
-    margin-left: 5px; /* Space between title and close button */
-    cursor: pointer; /* Change cursor to pointer */
+.taskbar-icon:hover {
+    background-color: #7eaaf5; /* Pointer cursor on hover */
 }
 
-.taskbar-icon:hover {
-    background-color: #d0d0d0; /* Darker background on hover */
+.taskbar-icon:active {
+    background-color: #1c4893; /* Active state */
+}
+
+.taskbar-close {
+    margin-left: 5px; /* Space between title and close button */
 }
 
 /* Task Item */
@@ -167,6 +172,10 @@ body, #desktop, .window-content {
 .desktop-icons .icon span {
     color: white;
     text-shadow: #000 1px 1px 2px; /* Text shadow for better visibility */
+}
+
+.desktop-icons .icon {
+        user-select: none; /* Prevent text selection */
 }
 
 .icon {

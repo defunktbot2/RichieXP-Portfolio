@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (appId === 'Contact') {
             content.innerHTML = `<h1>Contact Me</h1><form id="contact-form"><label for="name">Name:</label><input type="text" id="name" required><br><label for="email">Email:</label><input type="email" id="email" required><br><label for="message">Message:</label><input type="text" id="message" required><br><button type="submit">Send</button></form>`;
         } else if (appId === 'Resume') {
-            content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/preview" width="100%" height="600px" allow="autoplay"></iframe>`;
+            content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/preview" width="100%" height="600px" allow="autoplay"></iframe><a href="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/view?usp=sharing" target="_blank"><button class="download">DOWNLOAD</button></a>`;
         }
 
         // Event listeners for window controls
@@ -129,40 +129,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update the taskbar with open windows
     function updateTaskbar() {
-        const openApps = Array.from(desktop.querySelectorAll('.window'));
-        openWindows.innerHTML = openApps.map(window => {
-            const appId = window.dataset.app;
-            const isMinimized = window.style.display === 'none';
-            return `<span class="taskbar-icon" data-app="${appId}" style="opacity: ${isMinimized ? 0.5 : 1};">${appId} <button class="taskbar-close">x</button></span>`;
-        }).join('');
+    const openApps = Array.from(desktop.querySelectorAll('.window'));
+    openWindows.innerHTML = openApps.map(window => {
+        const appId = window.dataset.app;
+        const isMinimized = window.style.display === 'none';
+        return `
+            <span class="taskbar-icon" data-app="${appId}" style="opacity: ${isMinimized ? 0.5 : 1};">
+                ${appId} 
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="taskbar-close"></button>
+                </div>
+            </span>`;
+    }).join('');
 
-        // Add click listeners to taskbar icons for restore
-        document.querySelectorAll('.taskbar-icon').forEach(icon => {
-            icon.addEventListener('click', (e) => {
+    // Add click listeners to taskbar icons for restore
+    document.querySelectorAll('.taskbar-icon').forEach(icon => {
+        icon.addEventListener('click', (e) => {
+            const appId = icon.dataset.app;
+            const window = document.querySelector(`.window[data-app="${appId}"]`);
+            if (window) {
+                window.style.display = 'block'; // Restore window
+                window.style.zIndex = ++zIndexCounter; // Bring to front
+                updateTaskbar(); // Update taskbar
+            }
+        });
+
+        // Close button logic
+        const closeButton = icon.querySelector('.taskbar-close');
+        if (closeButton) {
+            closeButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the icon click
                 const appId = icon.dataset.app;
                 const window = document.querySelector(`.window[data-app="${appId}"]`);
                 if (window) {
-                    window.style.display = 'block'; // Restore window
-                    window.style.zIndex = ++zIndexCounter; // Bring to front
+                    window.remove(); // Close the window
                     updateTaskbar(); // Update taskbar
                 }
             });
-
-            // Close button logic
-            const closeButton = icon.querySelector('.taskbar-close');
-            if (closeButton) {
-                closeButton.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent triggering the icon click
-                    const appId = icon.dataset.app;
-                    const window = document.querySelector(`.window[data-app="${appId}"]`);
-                    if (window) {
-                        window.remove(); // Close the window
-                        updateTaskbar(); // Update taskbar
-                    }
-                });
-            }
-        });
-    }
+        }
+    });
+}
 
     // --- Start Menu ---
     const startButton = document.getElementById('start-button');
