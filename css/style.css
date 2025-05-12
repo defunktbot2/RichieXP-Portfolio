@@ -170,7 +170,7 @@ input {
 }
 
 .clock {
-    font-size: 1px;
+    font-size: 10px;
     position: fixed;
     bottom: 5px; /* Adjust this value to fit above the taskbar */
     right: 10px; /* Adjust as needed */
