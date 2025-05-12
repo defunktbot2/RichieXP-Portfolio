@@ -160,6 +160,27 @@ body, #desktop, .window-content {
     background-color: rgba(100, 100, 100, 0.9); /* Highlight on hover */
 }
 
+.clock {
+    position: fixed;
+    bottom: 0px; /* Adjust this value to fit above the taskbar */
+    right: 10px; /* Adjust as needed */
+    color: white;
+    padding: 5px; /* Less padding to fit better */
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 1000;
+    text-align: center; /* Center text */
+}
+
+.time {
+    font-size: 18px; /* Larger font for time */
+}
+
+.date {
+    font-size: 14px; /* Smaller font for date */
+}
+
 /* Desktop Icons */
 .desktop-icons {
     position: absolute;

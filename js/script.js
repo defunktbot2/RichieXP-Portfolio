@@ -7,6 +7,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let zIndexCounter = 1; // Keep track of window stacking order
 
+    // Clock
+    function updateClock() {
+        const now = new Date();
+
+        // Get hours and minutes
+        let hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, '0'); // Always two digits
+
+        // Determine AM or PM
+        const amPm = hours >= 12 ? 'PM' : 'AM';
+
+        // Format the hour for 12-hour format and remove leading zero
+        const formattedHours = hours % 12 || 12; // Converts to 12-hour format
+
+        // Create time string
+        const timeString = `${formattedHours}:${minutes} ${amPm}`;
+
+        // Format date in mm/dd/yyyy
+        const optionsDate = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const dateString = now.toLocaleDateString('en-US', optionsDate);
+
+        document.getElementById('time').textContent = timeString;
+        document.getElementById('date').textContent = dateString;
+    }
+
+    // Update the clock immediately and then every minute
+    updateClock();
+    setInterval(updateClock, 60000); // Update every minute
+
     // --- Window Management ---
     function createWindow(appId) {
         const windowClone = windowTemplate.content.cloneNode(true);
@@ -79,25 +108,31 @@ document.addEventListener('DOMContentLoaded', () => {
             content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/preview" width="100%" height="600px" allow="autoplay"></iframe><a href="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/view?usp=sharing" target="_blank"><button class="download">DOWNLOAD</button></a>`;
         }
 
-        // Event listeners for window controls
+        // Close
         closeButton.addEventListener('click', () => {
             windowElement.remove();
             updateTaskbar();
         });
 
+        // Minimize
         minimizeButton.addEventListener('click', () => {
             windowElement.style.display = 'none'; // Hide the window
             updateTaskbar(); // Update taskbar to reflect minimized state
         });
 
+        // Maximize
         maximizeButton.addEventListener('click', () => {
-            windowElement.classList.toggle('maximized');
-            if (windowElement.classList.contains('maximized')) {
-                windowElement.style.width = '100%';
-                windowElement.style.height = 'calc(100% - 40px)'; // Adjust for taskbar
+            const isMaximized = windowElement.classList.toggle('maximized');
+            if (isMaximized) {
+                windowElement.style.position = 'fixed'; // Fix the position
+                windowElement.style.top = '0'; // Snap to top
+                windowElement.style.left = '0'; // Snap to left
+                windowElement.style.width = '100vw'; // Full width
+                windowElement.style.height = 'calc(100vh - 40px)'; // Full height minus taskbar height
             } else {
                 windowElement.style.width = '300px'; // Restore default width
                 windowElement.style.height = '200px'; // Restore default height
+                windowElement.style.position = ''; // Reset position
             }
         });
 
@@ -105,6 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Make window draggable
         windowElement.querySelector('.title-bar').addEventListener('mousedown', (e) => {
+            // Prevent dragging if maximized
+            if (windowElement.classList.contains('maximized')) return;
+
             let offsetX = e.clientX - windowElement.getBoundingClientRect().left;
             let offsetY = e.clientY - windowElement.getBoundingClientRect().top;
 
@@ -129,46 +167,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update the taskbar with open windows
     function updateTaskbar() {
-    const openApps = Array.from(desktop.querySelectorAll('.window'));
-    openWindows.innerHTML = openApps.map(window => {
-        const appId = window.dataset.app;
-        const isMinimized = window.style.display === 'none';
-        return `
+        const openApps = Array.from(desktop.querySelectorAll('.window'));
+        openWindows.innerHTML = openApps.map(window => {
+            const appId = window.dataset.app;
+            const isMinimized = window.style.display === 'none';
+            return `
             <span class="taskbar-icon" data-app="${appId}" style="opacity: ${isMinimized ? 0.5 : 1};">
                 ${appId} 
                 <div class="title-bar-controls">
                     <button aria-label="Close" class="taskbar-close"></button>
                 </div>
             </span>`;
-    }).join('');
+        }).join('');
 
-    // Add click listeners to taskbar icons for restore
-    document.querySelectorAll('.taskbar-icon').forEach(icon => {
-        icon.addEventListener('click', (e) => {
-            const appId = icon.dataset.app;
-            const window = document.querySelector(`.window[data-app="${appId}"]`);
-            if (window) {
-                window.style.display = 'block'; // Restore window
-                window.style.zIndex = ++zIndexCounter; // Bring to front
-                updateTaskbar(); // Update taskbar
-            }
-        });
-
-        // Close button logic
-        const closeButton = icon.querySelector('.taskbar-close');
-        if (closeButton) {
-            closeButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent triggering the icon click
+        // Add click listeners to taskbar icons for restore
+        document.querySelectorAll('.taskbar-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
                 const appId = icon.dataset.app;
                 const window = document.querySelector(`.window[data-app="${appId}"]`);
                 if (window) {
-                    window.remove(); // Close the window
+                    window.style.display = 'block'; // Restore window
+                    window.style.zIndex = ++zIndexCounter; // Bring to front
                     updateTaskbar(); // Update taskbar
                 }
             });
-        }
-    });
-}
+
+            // Close button logic
+            const closeButton = icon.querySelector('.taskbar-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent triggering the icon click
+                    const appId = icon.dataset.app;
+                    const window = document.querySelector(`.window[data-app="${appId}"]`);
+                    if (window) {
+                        window.remove(); // Close the window
+                        updateTaskbar(); // Update taskbar
+                    }
+                });
+            }
+        });
+    }
 
     // --- Start Menu ---
     const startButton = document.getElementById('start-button');
