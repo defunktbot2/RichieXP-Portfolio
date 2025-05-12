@@ -24,12 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create time string
         const timeString = `${formattedHours}:${minutes} ${amPm}`;
 
-        // Format date in mm/dd/yyyy
-        const optionsDate = { year: 'numeric', month: '2-digit', day: '2-digit' };
-        const dateString = now.toLocaleDateString('en-US', optionsDate);
-
         document.getElementById('time').textContent = timeString;
-        document.getElementById('date').textContent = dateString;
     }
 
     // Update the clock immediately and then every minute
