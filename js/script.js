@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let zIndexCounter = 1; // Keep track of window stacking order
 
+    // Boot Screen
+    window.onload = function () {
+        setTimeout(() => {
+            window.location.href = 'index.html'; // Redirect to index.html
+        }, 3000); // Match this duration with your animation
+    };
+
     // Clock
     function updateClock() {
         const now = new Date();
@@ -251,4 +258,16 @@ document.addEventListener('DOMContentLoaded', () => {
             updateTaskbar();
         }
     });
+
+    // --- Boot Screen ---
+    // script.js
+    window.onload = function () {
+        setTimeout(() => {
+            document.getElementById('boot-screen').style.display = 'none';
+            // Redirect or show the main content here
+            // Example: window.location.href = 'main.html';
+            alert('Welcome to the site!');
+        }, 5000); // Match this duration with your animation
+    };
+
 });

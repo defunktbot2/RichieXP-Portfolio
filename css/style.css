@@ -2,12 +2,75 @@
 body {
     margin: 0;
     overflow: hidden; /* Hide scrollbars */
-    font-family: "XP", sans-serif; /* Using XP font */
-    background-color: hsl(188, 37%, 49%); /* You can adjust this */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: hsl(0, 0%, 0%); /* You can adjust this */
     color: #000; /* Change text color to match XP */
     cursor: url('assets/cursor.png'), auto; /* Custom cursor */
     -webkit-font-smoothing: none; /* Disable anti-aliasing */
     -moz-osx-font-smoothing: none; /* For older Firefox versions */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Boot Screen */
+#boot-screen {
+    text-align: center;
+    color: white;
+}
+
+.logo {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.loading-bar {
+    position: relative;
+    width: 300px; /* Width of the loading bar */
+    height: 20px;
+    background: #000000; /* Background of the loading bar */
+    border: 2px solid #ffffff;
+    overflow: hidden; /* Hide overflow */
+    margin: 20px auto;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.blocks {
+    display: flex;
+    position: absolute;
+    left: -60px; /* Start position for the blocks */
+    height: 100%; /* Match loading bar height */
+    animation: move 3s linear infinite; /* Adjust duration as needed */
+}
+
+.block {
+    width: 20px; /* Width of each block */
+    height: 100%; /* Match loading bar height */
+    background: linear-gradient(to bottom, #3944f5, #9eb9fd); /* Dark gradient */
+    border-right: 2px solid #000000; /* Line between blocks */
+}
+
+.block:last-child {
+    border-right: none; /* Remove right border for the last block */
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+    80% {
+        transform: translateX(300px); /* Move to the right */
+    }
+    100% {
+        transform: translateX(300px); /* Stay off-screen */
+    }
+}
+
+.status {
+    margin-top: 10px;
+    font-size: 18px;
 }
 
 a,
