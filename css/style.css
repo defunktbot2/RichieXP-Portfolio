@@ -48,10 +48,10 @@ input {
     background-image: url('assets/XP_Enhanced_Start_Button.png'); /* Path to your image */
     background-size: contain; /* Ensure the image fits the button */
     background-repeat: no-repeat; /* Avoid repeating the image */
-    width: 100px; /* Set width */
+    width: 100%; /* Set width */
     height: 100%; /* Set height */
     border: none; /* Remove border */
-    position: relative; /* Position for dropdown */
+    position: absolute; /* Position for dropdown */
 }
 
 #start-button:hover {
