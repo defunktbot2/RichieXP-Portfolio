@@ -17,14 +17,6 @@
             document.getElementById('login-screen').style.display = 'flex'; // Show login screen
         }
 
-        function playSound() {
-            const bootSound = document.getElementById('boot-sound');
-            bootSound.play();
-            setTimeout(() => {
-                window.location.href = 'home.html'; // Redirect after sound plays
-            }, 2000); // Redirect after 2 seconds
-        }
-
         window.onload = function () {
             const bootSound = document.getElementById('boot-sound');
 
@@ -33,6 +25,16 @@
                 showLoginScreen(); // Show login screen after boot
             }, 3000); // Show login screen after 3 seconds
         };
+
+        
+        function playSound() {
+            const bootSound = document.getElementById('boot-sound');
+            bootSound.play();
+            setTimeout(() => {
+                window.location.href = 'home.html'; // Redirect after sound plays
+            }, 2000); // Redirect after 2 seconds
+        }
+
     </script>
     <style>
         body {
