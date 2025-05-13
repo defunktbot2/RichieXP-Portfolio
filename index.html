@@ -13,11 +13,34 @@
             }, 3000);
         };
     </script>
+    <style>
+        .footer {
+            position: absolute;
+            bottom: 80px;
+            left: 100px;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 18px;
+        }
+
+        .username {
+            font-size: 1.125rem;
+            letter-spacing: -0.05em;
+            font-family: 'Helvetica', sans-serif;
+            font-style: italic;
+            font-weight: 600;
+            padding-right: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <div id="boot-screen">
-        <div class="logo"><img src="assets/Logo.png" alt="Windows XP Custom Logo with Richie Galacgac" style="max-width: 600px; height: auto;"></div>
+        <div class="logo">
+            <img src="assets/Logo.png" alt="Logo" style="max-width: 500px; height: auto;">
+        </div>
         <div class="loading-bar">
             <div class="blocks">
                 <div class="block"></div>
@@ -26,6 +49,10 @@
             </div>
         </div>
         <div class="status">Loading...</div>
+        <div class="footer">
+            <div>Welcome to my computer.</div>
+            <div class="username">defunktbot</div>
+        </div>
     </div>
 </body>
 
