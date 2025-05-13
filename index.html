@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="css/style.css">
     <script>
         window.onload = function () {
+            const bootSound = document.getElementById('boot-sound');
+
             setTimeout(() => {
-                window.location.href = 'boot.html'; // Redirect to boot.html
+                bootSound.play(); // Play sound effect
+                window.location.href = 'home.html'; // Redirect to home.html
             }, 3000);
         };
     </script>
@@ -36,12 +39,13 @@
             font-family: 'Helvetica', sans-serif;
             font-style: italic;
             font-weight: 600;
-            padding-right: 20px;
+            padding-right: 100px;
         }
     </style>
 </head>
 
 <body>
+    <audio id="boot-sound" src="assets/tada.mp3" preload="auto"></audio>
     <div id="boot-screen">
         <div class="logo">
             <img src="assets/Logo.png" alt="Logo" style="max-width: 500px; height: auto;">
