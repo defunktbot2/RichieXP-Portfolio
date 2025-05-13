@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (appId === 'Projects') {
             content.innerHTML = `<h1>My Projects</h1><ul><li><strong>Project 1:</strong> <a href="https://link-to-your-project1.com" target="_blank">Description of Project 1</a></li></ul>`;
         } else if (appId === 'Contact') {
-            content.innerHTML = `<h1>Contact Me</h1><form id="contact-form"><label for="name">Name:</label><input type="text" id="name" required><br><label for="email">Email:</label><input type="email" id="email" required><br><label for="message">Message:</label><input type="text" id="message" required><br><button type="submit">Send</button></form>`;
+            content.innerHTML = `<h1>Contact Me</h1><form id="contact-form"><label for="name">Name: </label><input type="text" id="name" required><br><label for="email">Email: </label><input type="email" id="email" required><br><label for="message">Message: </label><input type="text" id="message" required><br><button type="submit">Send</button></form>`;
         } else if (appId === 'Resume') {
             content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/preview" width="100%" height="600px" allow="autoplay"></iframe><a href="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/view?usp=sharing" target="_blank"><button class="download">DOWNLOAD</button></a>`;
         }

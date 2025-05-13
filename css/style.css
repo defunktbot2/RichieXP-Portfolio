@@ -1,3 +1,51 @@
+/* Import Fonts */
+@font-face {
+  font-family: "Helvetica BlackItalic";
+  font-weight: 400;
+  src: local("Helvetica BlackItalic"), url("/fonts/Helvetica-BlackItalic-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Franklin Gothic Medium";
+  font-weight: 400;
+  src: local("Franklin Gothic Medium"), url("/fonts/Franklin Gothic Medium Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Franklin Gothic Medium";
+  font-weight: 400;
+  src: local("Franklin Gothic Medium"), url("/fonts/Franklin Gothic Medium Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Tahoma";
+  font-weight: 400;
+  src: local("Tahoma"), url("/fonts/tahoma.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Tahoma";
+  font-weight: 700;
+  src: local("Tahoma Bold"), url("/fonts/tahomabd.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Verdana";
+  font-weight: 400;
+  src: local("Verdana"), url("/fonts/verdanabd.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Trebuchet MS";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Trebuchet MS"), url("/fonts/trebuc.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Trebuchet MS";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Trebuchet MS"), url("/fonts/trebucbd.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Trebuchet MS pixelated";
+  src: local("Trebuchet MS pixelated"), url("/fonts/ms-sans-serif/MS Sans Serif.ttf") format("truetype");
+}
+
 /* General Styles */
 body {
     margin: 0;
@@ -15,6 +63,37 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
+}
+
+h1 {
+  font-family: "Tahoma", sans-serif;
+  font-weight: 400;
+}
+
+h2 {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: "Verdana", sans-serif;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: "Trebuchet MS", sans-serif;
+  font-weight: 400;
+}
+
+p {
+  font-family: "Tahoma", sans-serif;
+  font-weight: 500;
+}
+
+.small-p {
+  font-family: "Tahoma", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
 }
 
 a,
@@ -229,33 +308,26 @@ input {
 }
 
 .clock {
-    font-size: 10px;
     position: fixed;
-    bottom: 5px;
+    bottom: 4px;
     /* Adjust this value to fit above the taskbar */
     right: 10px;
     /* Adjust as needed */
-    color: white;
     padding: 8px;
     /* Less padding to fit better */
-    font-family: "XP", sans-serif;
     z-index: 1000;
     text-align: center;
     /* Center text */
+}
+
+.time {
+    font-size: 16px;
+    color: white;
+    font-family: "XP", sans-serif;
     -webkit-font-smoothing: none;
     /* Disable anti-aliasing */
     -moz-osx-font-smoothing: none;
     /* For older Firefox versions */
-}
-
-.time {
-    font-size: 18px;
-    /* Larger font for time */
-}
-
-.date {
-    font-size: 14px;
-    /* Smaller font for date */
 }
 
 /* Desktop Icons */
@@ -291,7 +363,6 @@ input {
 
 .icon img {
     width: 48px;
-    /* Pixelated icon size */
     height: 48px;
 }
 
@@ -408,6 +479,7 @@ input {
     /* Additional wrapping for long words */
     white-space: normal;
     /* Allow text to wrap */
+    font-size: 16px;
 }
 
 /* Contact Form */
@@ -424,6 +496,16 @@ input {
     /* Optional: rounded corners */
     resize: none;
     /* Prevent resizing */
+}
+
+#contact-form label {
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.window-body #contact-form label {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
 /* Social Media */
@@ -455,7 +537,7 @@ input {
     text-align: center;
 }
 
-.window-body.social-media-icons p.credit {
+p.credit {
     grid-column: 1 / -1;
     /* Make the credit paragraph span all grid columns */
     text-align: center;
