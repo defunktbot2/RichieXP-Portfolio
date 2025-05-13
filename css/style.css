@@ -6,8 +6,6 @@ body {
     background-color: hsl(0, 0%, 0%); /* You can adjust this */
     color: #000; /* Change text color to match XP */
     cursor: url('assets/cursor.png'), auto; /* Custom cursor */
-    -webkit-font-smoothing: none; /* Disable anti-aliasing */
-    -moz-osx-font-smoothing: none; /* For older Firefox versions */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +20,6 @@ body {
 }
 
 .logo {
-    font-size: 48px;
     margin-bottom: 20px;
 }
 
@@ -87,7 +84,6 @@ body,
 #desktop, 
 .window-content, 
 .clock {
-    image-rendering: pixelated; /* Ensure pixelation */
     -webkit-font-smoothing: none; /* Disable anti-aliasing for WebKit */
     -moz-osx-font-smoothing: grayscale; /* Disable anti-aliasing for Firefox */
     font-family: "XP", sans-serif; /* Ensure consistent font family */
@@ -283,7 +279,6 @@ input {
 .icon img {
     width: 48px; /* Pixelated icon size */
     height: 48px;
-    image-rendering: pixelated; /* Ensure pixelation */
 }
 
 .icon span {
