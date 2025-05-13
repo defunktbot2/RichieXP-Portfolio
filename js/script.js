@@ -7,13 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let zIndexCounter = 1; // Keep track of window stacking order
 
-    // Boot Screen
-    window.onload = function () {
-        setTimeout(() => {
-            window.location.href = 'index.html'; // Redirect to index.html
-        }, 3000); // Match this duration with your animation
-    };
-
     // Clock
     function updateClock() {
         const now = new Date();

@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     <title>RichieXP Portfolio</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link your CSS -->
+    <script>
+        window.onload = function () {
+            setTimeout(() => {
+                window.location.href = 'index.html'; // Redirect to index.html
+            }, 3000); // Adjust the duration to match your loading animation
+        };
+    </script>
 </head>
 
 <body>
     <div id="boot-screen">
-        <div class="logo">Windows XP</div>
+        <div class="logo">Loading...</div>
         <div class="loading-bar">
             <div class="blocks">
                 <div class="block"></div>
@@ -20,7 +27,6 @@
         </div>
         <div class="status">Loading...</div>
     </div>
-    <script src="js/script.js"></script>
 </body>
 
 </html>
