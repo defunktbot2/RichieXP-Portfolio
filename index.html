@@ -12,16 +12,132 @@
     <title>RichieXP Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <script>
+        function showLoginScreen() {
+            document.getElementById('boot-screen').style.display = 'none'; // Hide boot screen
+            document.getElementById('login-screen').style.display = 'flex'; // Show login screen
+        }
+
+        function playSound() {
+            const bootSound = document.getElementById('boot-sound');
+            bootSound.play();
+            setTimeout(() => {
+                window.location.href = 'home.html'; // Redirect after sound plays
+            }, 2000); // Redirect after 2 seconds
+        }
+
         window.onload = function () {
             const bootSound = document.getElementById('boot-sound');
 
             setTimeout(() => {
                 bootSound.play(); // Play sound effect
-                window.location.href = 'home.html'; // Redirect to home.html
-            }, 3000);
+                showLoginScreen(); // Show login screen after boot
+            }, 3000); // Show login screen after 3 seconds
         };
     </script>
     <style>
+        body {
+            margin: 0;
+            background-color: black;
+            /* Boot screen background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #boot-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+        }
+
+        #login-screen {
+            display: none;
+            /* Initially hidden */
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-color: #567dda;
+            /* Windows XP blue */
+            flex-direction: column;
+            overflow: hidden;
+            /* Prevent scrolling */
+        }
+
+        .top-bar,
+        .bottom-bar {
+            background-color: #012f9e;
+            /* Dark blue */
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .divider {
+            height: 2px;
+            background-color: white;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 0 20px;
+            /* Add padding to prevent content touching edges */
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center items */
+            margin-right: 20px;
+            /* Space between logo and line */
+        }
+
+        .vertical-line {
+            width: 2px;
+            /* Width of the line */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+            /* Fade effect */
+            height: 200px;
+            /* Height of the line */
+            margin: 0 30px;
+            /* Add equal margin on both sides */
+        }
+
+        .profile-box {
+            background: linear-gradient(to right, #1542a9, #567dda);
+            /* Gradient */
+            border: 1px solid white;
+            /* White border */
+            border-radius: 20px;
+            /* Rounded corners */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            /* Make the profile box clickable */
+            flex-grow: 1;
+            /* Allow box to grow */
+        }
+
+        .profile-pic {
+            width: 100px;
+            /* Adjusted size */
+            height: 100px;
+            /* Adjusted size */
+            border-radius: 20px;
+            /* Circular profile picture */
+            border: 3px solid #f8cb17;
+            /* Yellow outline */
+            margin-right: 10px;
+        }
+
         .footer {
             position: absolute;
             bottom: 80px;
@@ -33,7 +149,7 @@
             font-size: 18px;
         }
 
-        .username {
+        .handle {
             font-size: 1.125rem;
             letter-spacing: -0.05em;
             font-family: 'Helvetica', sans-serif;
@@ -41,11 +157,22 @@
             font-weight: 600;
             padding-right: 100px;
         }
+
+        .username {
+            font-size: 24px;
+            font-family: 'XP', sans-serif;
+            font-weight: 500;
+        }
+
+        .footer-text {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <audio id="boot-sound" src="assets/tada.mp3" preload="auto"></audio>
+
     <div id="boot-screen">
         <div class="logo">
             <img src="assets/Logo.png" alt="Logo" style="max-width: 500px; height: auto;">
@@ -60,7 +187,30 @@
         <div class="status">Loading...</div>
         <div class="footer">
             <div>Welcome to my computer.</div>
-            <div class="username">defunktbot</div>
+            <div class="handle">defunktbot</div>
+        </div>
+    </div>
+
+    <div id="login-screen">
+        <div class="top-bar">Windows XP</div>
+        <div class="divider"></div>
+        <div class="content">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="assets/Logo.png" alt="Logo" style="max-width: 200px; height: auto;">
+                </div>
+                <div>Click on my username to get started.</div>
+            </div>
+            <div class="vertical-line"></div> <!-- Vertical line -->
+            <div class="profile-box" onclick="playSound()">
+                <img src="assets/Profile_Picture.png" alt="Profile" class="profile-pic" />
+                <div class="username">Richie</div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="bottom-bar">
+            After logging in, you can browse the files on my computer. Take a look at my projects and check out my
+            social media!
         </div>
     </div>
 </body>
