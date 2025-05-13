@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RichieXP Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div id="desktop">
+        <div id="taskbar">
+            <button id="start-button"></button>
+            <div class="open-windows"></div>
+            <div id="clock" class="clock">
+                <div id="time" class="time"></div>
+            </div>
+        </div>
+
+        <div class="desktop-icons">
+            <div class="icon" data-app="About Me">
+                <img src="assets/About_Icon.png" alt="About">
+                <span>About Me</span>
+            </div>
+            <div class="icon" data-app="Projects">
+                <img src="assets/Projects_Icon.png" alt="Projects">
+                <span>Projects</span>
+            </div>
+            <div class="icon" data-app="Contact">
+                <img src="assets/Contact_Icon.png" alt="Contact">
+                <span>Contact</span>
+            </div>
+            <div class="icon" data-app="Resume">
+                <img src="assets/Resume_Icon.png" alt="Resume">
+                <span>Resume</span>
+            </div>
+            <div class="icon" data-app="Social Media">
+                <img src="assets/Social_Media_Icons/LinkedIn.gif" alt="Social Media">
+                <span>Social Media</span>
+            </div>
+            <div class="icon" data-app="Adopt a Kitty">
+                <img src="assets/Adopt_Icon.png" alt="Adopt a Kitty">
+                <span>Adopt a Kitty<br>(WIP)</span>
+            </div>
+        </div>
+
+        <div id="start-menu" class="hidden">
+            <ul>
+                <li data-app="About Me">
+                    <img src="assets/About_Icon.png" alt="About Icon"> About Me
+                </li>
+                <li data-app="Projects">
+                    <img src="assets/Projects_Icon.png" alt="Projects Icon"> Projects
+                </li>
+                <li data-app="Contact">
+                    <img src="assets/Contact_Icon.png" alt="Contact Icon"> Contact
+                </li>
+                <li data-app="Resume">
+                    <img src="assets/Resume_Icon.png" alt="Resume Icon"> Resume
+                </li>
+                <li data-app="Social Media">
+                    <img src="assets/Social_Media_Icons/LinkedIn.gif" alt="Social Media Icon"> Social Media
+                </li>
+                <li data-app="Adopt a Kitty">
+                    <img src="assets/Adopt_Icon.png" alt="Adopt a Kitty Icon"> Adopt a Kitty<br>(WIP)
+                </li>
+            </ul>
+        </div>
+
+        <template id="window-template">
+            <div class="window" style="width: 700px; height: 800px">
+                <div class="title-bar">
+                    <div class="title-bar-text">A Window With Stuff In It</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <p>There's so much room for activities!</p>
+                </div>
+            </div>
+        </template>
+
+        <template id="social-media-template">
+            <div class="window" style="width: 700px; height: 300px">
+                <div class="title-bar">
+                    <div class="title-bar-text">Social Media</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body social-media-icons">
+                    <a href="https://www.deviantart.com/defunktbot" target="_blank">
+                        <img src="assets/Social_Media_Icons/deviantART.gif" alt="Facebook">
+                        <span>DeviantArt</span>
+                    </a>
+                    <a href="https://www.facebook.com/defunktbot/" target="_blank">
+                        <img src="assets/Social_Media_Icons/Facebook.gif" alt="Twitter">
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/defunktbot/" target="_blank">
+                        <img src="assets/Social_Media_Icons/Instagram.gif" alt="LinkedIn">
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/richie-galacgac/" target="_blank">
+                        <img src="assets/Social_Media_Icons/LinkedIn.gif" alt="GitHub">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://adsproject.tumblr.com/" target="_blank">
+                        <img src="assets/Social_Media_Icons/Tumblr.gif" alt="YouTube">
+                        <span>Tumblr</span>
+                    </a>
+                    <a href="https://x.com/richiejunior25" target="_blank">
+                        <img src="assets/Social_Media_Icons/Twitter.gif" alt="Reddit">
+                        <span>Twitter/X</span>
+                    </a>
+                    <a href="https://www.youtube.com/@richiegalacgac" target="_blank">
+                        <img src="assets/Social_Media_Icons/YouTube.gif" alt="Twitch">
+                        <span>YouTube School</span>
+                    </a>
+                     <a href="https://www.youtube.com/@ArtificialDesignShowdown" target="_blank">
+                        <img src="assets/Social_Media_Icons/YouTube.gif" alt="Instagram">
+                        <span>YouTube Capstone</span>
+                    </a>
+                    <p class="credit">Credit:<a
+                            href="https://www.deviantart.com/gasara/art/Pastel-Social-Icon-Set-608755221"
+                            target="_blank">@Gasara</a></p>
+                </div>
+            </div>
+        </template>
+
+        <template id="adopt-kitty-template">
+            <div class="window" style="width: 700px; height: 800px">
+                <div class="title-bar">
+                    <div class="title-bar-text">Adopt a Kitty (WIP)</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <p>This feature is still under development. Please check back later!</p>
+                </div>
+            </div>
+        </template>
+    </div>
+</body>
+
+</html>
