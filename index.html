@@ -26,7 +26,7 @@
             }, 3000); // Show login screen after 3 seconds
         };
 
-        
+
         function playSound() {
             const bootSound = document.getElementById('boot-sound');
             bootSound.play();
@@ -44,6 +44,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+
+        /* Boot Screen */
         #boot-screen {
             display: flex;
             flex-direction: column;
@@ -53,6 +55,75 @@
             color: white;
         }
 
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .loading-bar {
+            position: relative;
+            width: 300px;
+            /* Width of the loading bar */
+            height: 20px;
+            background: #000000;
+            /* Background of the loading bar */
+            border: 2px solid #ffffff;
+            overflow: hidden;
+            /* Hide overflow */
+            margin: 20px auto;
+            border-radius: 5px;
+            /* Rounded corners */
+        }
+
+        .blocks {
+            display: flex;
+            position: absolute;
+            left: -60px;
+            /* Start position for the blocks */
+            height: 100%;
+            /* Match loading bar height */
+            animation: move 3s linear infinite;
+            /* Adjust duration as needed */
+        }
+
+        .block {
+            width: 20px;
+            /* Width of each block */
+            height: 100%;
+            /* Match loading bar height */
+            background: linear-gradient(to bottom, #3944f5, #9eb9fd);
+            /* Dark gradient */
+            border-right: 2px solid #000000;
+            /* Line between blocks */
+        }
+
+        .block:last-child {
+            border-right: none;
+            /* Remove right border for the last block */
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+                /* Start position */
+            }
+
+            80% {
+                transform: translateX(300px);
+                /* Move to the right */
+            }
+
+            100% {
+                transform: translateX(-100%);
+                /* Reset off-screen */
+            }
+        }
+
+        .status {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Login Screen */
         #login-screen {
             display: none;
             /* Initially hidden */
@@ -64,6 +135,9 @@
             flex-direction: column;
             overflow: hidden;
             /* Prevent scrolling */
+            background-image: radial-gradient(circle at top left, #7696e1 5%, #567dda 30%);
+            background-repeat: no-repeat;
+            /* Prevent the gradient from repeating */
         }
 
         .top-bar {
