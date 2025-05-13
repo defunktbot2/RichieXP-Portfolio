@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock();
     setInterval(updateClock, 60000); // Update every minute
 
+    let windowCounter = 0;
+    const offsetX = 200;
+    const offsetY = 200;
+
     // --- Window Management ---
     function createWindow(appId) {
         let windowTemplateToUse;
@@ -52,48 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const minimizeButton = windowElement.querySelector('button[aria-label="Minimize"]');
         const maximizeButton = windowElement.querySelector('button[aria-label="Maximize"]');
 
-        // Resize Logic
+        // Resize Logic (keep this part as it is)
         const resizeHandle = document.createElement('div');
         resizeHandle.classList.add('resize-handle');
         windowElement.appendChild(resizeHandle);
 
-        const minWidth = 270; // Set your minimum width
-        const minHeight = 100; // Set your minimum height
+        const minWidth = 270;
+        const minHeight = 100;
 
-        resizeHandle.addEventListener('mousedown', (e) => {
-            e.preventDefault(); // Prevent text selection
+        resizeHandle.addEventListener('mousedown', (e) => { /* ... your resize event listener ... */ });
 
-            // Store initial dimensions and mouse position
-            const startWidth = windowElement.offsetWidth;
-            const startHeight = windowElement.offsetHeight;
-            const startX = e.clientX;
-            const startY = e.clientY;
-
-            const onMouseMove = (e) => {
-                // Calculate new width and height based on mouse movement
-                let newWidth = startWidth + (e.clientX - startX);
-                let newHeight = startHeight + (e.clientY - startY);
-
-                // Check against minimum dimensions
-                newWidth = Math.max(newWidth, minWidth);
-                newHeight = Math.max(newHeight, minHeight);
-
-                // Set new dimensions
-                windowElement.style.width = `${newWidth}px`;
-                windowElement.style.height = `${newHeight}px`;
-            };
-
-            const onMouseUp = () => {
-                document.removeEventListener('mousemove', onMouseMove);
-                document.removeEventListener('mouseup', onMouseUp);
-            };
-
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-        });
+        // Set fixed initial window position
+        windowElement.style.left = '150px'; // Adjust the horizontal position as needed
+        windowElement.style.top = '75px';  // Adjust the vertical position as needed
 
         // Set window title and content based on appId
-        header.textContent = appId.charAt(0).toUpperCase() + appId.slice(1); // Default title
+        header.textContent = appId.charAt(0).toUpperCase() + appId.slice(1);
 
         if (appId === 'About Me') {
             content.innerHTML = `
