@@ -55,13 +55,13 @@ body {
 
 @keyframes move {
     0% {
-        transform: translateX(0);
+        transform: translateX(0); /* Start position */
     }
     80% {
         transform: translateX(300px); /* Move to the right */
     }
     100% {
-        transform: translateX(300px); /* Stay off-screen */
+        transform: translateX(-100%); /* Reset off-screen */
     }
 }
 
