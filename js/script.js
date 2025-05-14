@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const minimizeButton = windowElement.querySelector('button[aria-label="Minimize"]');
         const maximizeButton = windowElement.querySelector('button[aria-label="Maximize"]');
 
-        // Resize Logic (keep this part as it is)
+        // Resize Logic
         const resizeHandle = document.createElement('div');
         resizeHandle.classList.add('resize-handle');
         windowElement.appendChild(resizeHandle);
@@ -64,11 +64,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const minWidth = 270;
         const minHeight = 100;
 
-        resizeHandle.addEventListener('mousedown', (e) => { /* ... your resize event listener ... */ });
+        resizeHandle.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+
+            const startWidth = windowElement.offsetWidth;
+            const startHeight = windowElement.offsetHeight;
+            const startX = e.clientX;
+            const startY = e.clientY;
+
+            const onMouseMove = (e) => {
+                let newWidth = startWidth + (e.clientX - startX);
+                let newHeight = startHeight + (e.clientY - startY);
+
+                newWidth = Math.max(newWidth, minWidth);
+                newHeight = Math.max(newHeight, minHeight);
+
+                windowElement.style.width = `${newWidth}px`;
+                windowElement.style.height = `${newHeight}px`;
+            };
+
+            const onMouseUp = () => {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            };
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        });
 
         // Set fixed initial window position
-        windowElement.style.left = '150px'; // Adjust the horizontal position as needed
-        windowElement.style.top = '75px';  // Adjust the vertical position as needed
+        windowElement.style.left = '150px';
+        windowElement.style.top = '75px';
 
         // Set window title and content based on appId
         header.textContent = appId.charAt(0).toUpperCase() + appId.slice(1);
@@ -84,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (appId === 'Projects') {
             content.innerHTML = `<h1>My Projects</h1><ul><li><strong>Project 1:</strong> <a href="https://link-to-your-project1.com" target="_blank">Description of Project 1</a></li></ul>`;
         } else if (appId === 'Contact') {
-            content.innerHTML = `<h1>Contact Me</h1><form id="contact-form"><label for="name">Name: </label><input type="text" id="name" required><br><label for="email">Email: </label><input type="email" id="email" required><br><label for="message">Message: </label><input type="text" id="message" required><br><button type="submit">Send</button></form>`;
+            content.innerHTML = `<h1>Contact Me</h1><form id="contact-form"><label for="name">Name:</label><input type="text" id="name" required><br><label for="email">Email:</label><input type="email" id="email" required><br><label for="message">Message:</label><input type="text" id="message" required><br><button type="submit">Send</button></form>`;
         } else if (appId === 'Resume') {
             content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/preview" width="100%" height="600px" allow="autoplay"></iframe><a href="https://drive.google.com/file/d/1YaLLI2IhMzxEbrsRgvPpHfZCaCMLeAjj/view?usp=sharing" target="_blank"><button class="download">DOWNLOAD</button></a>`;
         }
@@ -117,31 +143,29 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('mouseup', onMouseUp);
         });
 
-        // Close
+        // Close, Minimize, Maximize listeners
         closeButton.addEventListener('click', () => {
             windowElement.remove();
             updateTaskbar();
         });
 
-        // Minimize
         minimizeButton.addEventListener('click', () => {
-            windowElement.style.display = 'none'; // Hide the window
-            updateTaskbar(); // Update taskbar to reflect minimized state
+            windowElement.style.display = 'none';
+            updateTaskbar();
         });
 
-        // Maximize
         maximizeButton.addEventListener('click', () => {
             const isMaximized = windowElement.classList.toggle('maximized');
             if (isMaximized) {
-                windowElement.style.position = 'fixed'; // Fix the position
-                windowElement.style.top = '0'; // Snap to top
-                windowElement.style.left = '0'; // Snap to left
-                windowElement.style.width = '100vw'; // Full width
-                windowElement.style.height = 'calc(100vh - 40px)'; // Full height minus taskbar height
+                windowElement.style.position = 'fixed';
+                windowElement.style.top = '0';
+                windowElement.style.left = '0';
+                windowElement.style.width = '100vw';
+                windowElement.style.height = 'calc(100vh - 40px)';
             } else {
-                windowElement.style.width = '300px'; // Restore default width
-                windowElement.style.height = '200px'; // Restore default height
-                windowElement.style.position = ''; // Reset position
+                windowElement.style.width = '300px';
+                windowElement.style.height = '200px';
+                windowElement.style.position = '';
             }
         });
     }
