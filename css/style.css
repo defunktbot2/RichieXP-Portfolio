@@ -388,6 +388,13 @@ input {
     white-space: nowrap;
 }
 
+.window .title-bar {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
 .window-header {
     background-color: #aaa;
     color: #000;
