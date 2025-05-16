@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>My long-term goal is to be a web designer. To achieve this, I am pursuing a Bachelor of Arts degree in Creative Media with a concentration in Design and Media at the University of Hawaii West Oahu (UHWO). My interest in web design began in sixth grade when I made a joke website using Weebly. I made another website for seventh grade National History Day (NHD) and won first place in the district. I was mesmerized by the process of creating websites and meeting others’ needs. As I explored web design more, I became more intrigued and decided this was it. This is the career I dreamed of.</p>
             </div>`;
         } else if (appId === 'Projects') {
-            content.innerHTML = `<h1>My Projects</h1><ul><li><strong>Project 1:</strong> <a href="https://link-to-your-project1.com" target="_blank">Description of Project 1</a></li></ul>`;
+            content.innerHTML = `<h1>My Projects</h1><p>This feature is still under development. Please check back later!</p><br><ul><li><strong>Project 1:</strong> <a href="https://link-to-your-project1.com" target="_blank">Description of Project 1</a></li></ul>`;
         } else if (appId === 'Contact') {
             content.innerHTML = `<h1>Contact Me</h1><form id="contact-form"><label for="name">Name:</label><input type="text" id="name" required><br><label for="email">Email:</label><input type="email" id="email" required><br><label for="message">Message:</label><input type="text" id="message" required><br><button type="submit">Send</button></form>`;
         } else if (appId === 'Resume') {
