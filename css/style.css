@@ -1,49 +1,57 @@
 /* Import Fonts */
 @font-face {
-  font-family: "Helvetica BlackItalic";
-  font-weight: 400;
-  src: local("Helvetica BlackItalic"), url("/fonts/Helvetica-BlackItalic-Regular.ttf") format("truetype");
+    font-family: "Helvetica BlackItalic";
+    font-weight: 400;
+    src: local("Helvetica BlackItalic"), url("/fonts/Helvetica-BlackItalic-Regular.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Franklin Gothic Medium";
-  font-weight: 400;
-  src: local("Franklin Gothic Medium"), url("/fonts/Franklin Gothic Medium Regular.ttf") format("truetype");
+    font-family: "Franklin Gothic Medium";
+    font-weight: 400;
+    src: local("Franklin Gothic Medium"), url("/fonts/Franklin Gothic Medium Regular.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Franklin Gothic Medium";
-  font-weight: 400;
-  src: local("Franklin Gothic Medium"), url("/fonts/Franklin Gothic Medium Regular.ttf") format("truetype");
+    font-family: "Franklin Gothic Medium";
+    font-weight: 400;
+    src: local("Franklin Gothic Medium"), url("/fonts/Franklin Gothic Medium Regular.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Tahoma";
-  font-weight: 400;
-  src: local("Tahoma"), url("/fonts/tahoma.ttf") format("truetype");
+    font-family: "Tahoma";
+    font-weight: 400;
+    src: local("Tahoma"), url("/fonts/tahoma.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Tahoma";
-  font-weight: 700;
-  src: local("Tahoma Bold"), url("/fonts/tahomabd.ttf") format("truetype");
+    font-family: "Tahoma";
+    font-weight: 700;
+    src: local("Tahoma Bold"), url("/fonts/tahomabd.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Verdana";
-  font-weight: 400;
-  src: local("Verdana"), url("/fonts/verdanabd.ttf") format("truetype");
+    font-family: "Verdana";
+    font-weight: 400;
+    src: local("Verdana"), url("/fonts/verdanabd.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Trebuchet MS";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Trebuchet MS"), url("/fonts/trebuc.ttf") format("truetype");
+    font-family: "Trebuchet MS";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Trebuchet MS"), url("/fonts/trebuc.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Trebuchet MS";
-  font-style: normal;
-  font-weight: 600;
-  src: local("Trebuchet MS"), url("/fonts/trebucbd.ttf") format("truetype");
+    font-family: "Trebuchet MS";
+    font-style: normal;
+    font-weight: 600;
+    src: local("Trebuchet MS"), url("/fonts/trebucbd.ttf") format("truetype");
 }
+
 @font-face {
-  font-family: "Trebuchet MS pixelated";
-  src: local("Trebuchet MS pixelated"), url("/fonts/ms-sans-serif/MS Sans Serif.ttf") format("truetype");
+    font-family: "Trebuchet MS pixelated";
+    src: local("Trebuchet MS pixelated"), url("/fonts/ms-sans-serif/MS Sans Serif.ttf") format("truetype");
 }
 
 /* General Styles */
@@ -53,9 +61,7 @@ body {
     /* Hide scrollbars */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #236de5;
-    /* You can adjust this */
     color: #000;
-    /* Change text color to match XP */
     cursor: url('assets/cursor.png'), auto;
     /* Custom cursor */
     display: flex;
@@ -66,34 +72,34 @@ body {
 }
 
 h1 {
-  font-family: "Tahoma", sans-serif;
-  font-weight: 400;
+    font-family: "Tahoma", sans-serif;
+    font-weight: 400;
 }
 
 h2 {
-  font-family: "Franklin Gothic Medium", sans-serif;
-  font-weight: 400;
+    font-family: "Franklin Gothic Medium", sans-serif;
+    font-weight: 400;
 }
 
 h3 {
-  font-family: "Verdana", sans-serif;
-  font-weight: 400;
+    font-family: "Verdana", sans-serif;
+    font-weight: 400;
 }
 
 h4 {
-  font-family: "Trebuchet MS", sans-serif;
-  font-weight: 400;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: 400;
 }
 
 p {
-  font-family: "Tahoma", sans-serif;
-  font-weight: 500;
+    font-family: "Tahoma", sans-serif;
+    font-weight: 500;
 }
 
 .small-p {
-  font-family: "Tahoma", sans-serif;
-  font-size: 11px;
-  font-weight: 400;
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
 }
 
 a,
@@ -177,8 +183,10 @@ input {
     border: 1px solid #ccc;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 100;
-    width: 150px;
-    /* Set a fixed width for the menu */
+    width: 80%;
+    /* Responsive width */
+    max-width: 430px;
+    /* Maximum width */
 }
 
 #start-menu.hidden {
@@ -376,14 +384,14 @@ input {
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 400px;
-    height: 600px;
+    width: 90%; /* Responsive width */
+    height: auto; /* Allow height to adjust */
+    overflow: auto; /* Enable scrolling */
     background-color: #ddd;
     border: 2px solid #000;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     z-index: 1;
     /* Ensure windows are above desktop */
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -552,4 +560,25 @@ p.credit {
     font-size: 16px;
     font-weight: bold;
     white-space: no wrap;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    #start-menu {
+        width: 95%; /* Full width on smaller screens */
+    }
+
+    .desktop-icons .icon {
+        margin-bottom: 10px; /* Space between icons */
+        width: 20%; /* Adjust icon size */
+    }
+
+    .window {
+        width: 95%; /* Full width for mobile */
+        height: auto; /* Allow dynamic height */
+    }
+
+    .clock {
+        font-size: 14px; /* Adjust clock size */
+    }
 }
