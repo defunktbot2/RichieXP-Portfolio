@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (appId === 'Contact') {
             content.innerHTML = `<h1>Contact Me</h1><form id="contact-form"><label for="name">Name:</label><input type="text" id="name" required><br><label for="email">Email:</label><input type="email" id="email" required><br><label for="message">Message:</label><input type="text" id="message" required><br><button type="submit">Send</button></form>`;
         } else if (appId === 'Resume') {
-            content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1vK8dFUPjxR2kWBjlLRPUoT4tQLEJFN1I/preview" width="100%" height="600px" allow="autoplay"></iframe><a href="https://drive.google.com/uc?export=download&id=1vK8dFUPjxR2kWBjlLRPUoT4tQLEJFN1I" target="_blank"><button class="download">DOWNLOAD</button></a>`;
+            content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1vK8dFUPjxR2kWBjlLRPUoT4tQLEJFN1I/preview" width="100%" height="600px" allow="autoplay"></iframe><a href="https://drive.google.com/uc?export=download&id=1vK8dFUPjxR2kWBjlLRPUoT4tQLEJFN1I"><button class="download">DOWNLOAD</button></a>`;
         }
 
         desktop.appendChild(windowElement);
