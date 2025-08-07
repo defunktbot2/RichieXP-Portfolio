@@ -67,59 +67,41 @@
         .loading-bar {
             position: relative;
             width: 300px;
-            /* Width of the loading bar */
             height: 20px;
             background: #000000;
-            /* Background of the loading bar */
-            border: 2px solid #ffffff;
+            border: 2px solid #b2b2b2;
             overflow: hidden;
-            /* Hide overflow */
             margin: 20px auto;
             border-radius: 5px;
-            /* Rounded corners */
         }
 
         .blocks {
             display: flex;
             position: absolute;
-            left: -60px;
-            /* Start position for the blocks */
+            left: 0;
+            top: 0;
             height: 100%;
-            /* Match loading bar height */
-            animation: move 3s linear infinite;
-            /* Adjust duration as needed */
+            width: 80px;
+            animation: loader 3.5s linear infinite;
         }
 
         .block {
             width: 20px;
-            /* Width of each block */
             height: 100%;
-            /* Match loading bar height */
-            background: linear-gradient(to bottom, #3944f5, #9eb9fd);
-            /* Dark gradient */
+            background: linear-gradient(to bottom, #2838c7 0%,#5979ef 17%,#869ef3 32%,#869ef3 45%,#5979ef 59%,#2838c7 100%);
             border-right: 2px solid #000000;
-            /* Line between blocks */
         }
 
         .block:last-child {
             border-right: none;
-            /* Remove right border for the last block */
         }
 
-        @keyframes move {
+        @keyframes loader {
             0% {
-                transform: translateX(0);
-                /* Start position */
+                transform: translateX(-250px);
             }
-
-            80% {
-                transform: translateX(300px);
-                /* Move to the right */
-            }
-
             100% {
-                transform: translateX(-100%);
-                /* Reset off-screen */
+                transform: translateX(400px);
             }
         }
 
