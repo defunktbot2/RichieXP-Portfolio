@@ -50,26 +50,71 @@
         </div>
 
         <div id="start-menu" class="hidden">
-            <ul>
-                <li data-app="About Me">
-                    <img src="assets/Desktop_Icons/About.png" alt="About Icon"> About Me
-                </li>
-                <li data-app="Projects">
-                    <img src="assets/Desktop_Icons/Projects.png" alt="Projects Icon"> Projects
-                </li>
-                <li data-app="Contact">
-                    <img src="assets/Desktop_Icons/Contact.png" alt="Contact Icon"> Contact
-                </li>
-                <li data-app="Resume">
-                    <img src="assets/Desktop_Icons/Resume.png" alt="Resume Icon"> Resume
-                </li>
-                <li data-app="Social Media">
-                    <img src="assets/Desktop_Icons/Social_Media.gif" alt="Social Media Icon"> Social Media
-                </li>
-                <li data-app="Adopt a Kitty">
-                    <img src="assets/Desktop_Icons/Adopt_a_Kitty.png" alt="Adopt a Kitty Icon"> Adopt a Kitty<br>(WIP)
-                </li>
-            </ul>
+            <div class="xp-startmenu">
+                <!-- Top User Row -->
+                <div class="xp-startmenu-user">
+                    <img src="/assets/Profile_Picture.png" alt="Profile" class="xp-startmenu-userpic">
+                    <span class="xp-startmenu-username">Richie Galacgac</span>
+                </div>
+                <!-- Main Menu Row -->
+                <div class="xp-startmenu-main">
+                    <ul>
+                        <li data-app="About Me">
+                            <img src="assets/Desktop_Icons/About.png" alt="About Icon">
+                            <div>
+                                <span class="xp-startmenu-label">About Me</span>
+                                <span class="xp-startmenu-desc">Learn more about me and how I can be a great fit for your team.</span>
+                            </div>
+                        </li>
+                        <li data-app="Projects">
+                            <img src="assets/Desktop_Icons/Projects.png" alt="Projects Icon">
+                            <div>
+                                <span class="xp-startmenu-label">Projects</span>
+                                <span class="xp-startmenu-desc">See my work and how I use my skills!</span>
+                            </div>
+                        </li>
+                        <li data-app="Contact">
+                            <img src="assets/Desktop_Icons/Contact.png" alt="Contact Icon">
+                            <div>
+                                <span class="xp-startmenu-label">Contact</span>
+                                <span class="xp-startmenu-desc">Get in touch with any inquiries.</span>
+                            </div>
+                        </li>
+                        <li data-app="Resume">
+                            <img src="assets/Desktop_Icons/Resume.png" alt="Resume Icon">
+                            <div>
+                                <span class="xp-startmenu-label">Resume</span>
+                                <span class="xp-startmenu-desc">View my resume and skills.</span>
+                            </div>
+                        </li>
+                        <li data-app="Social Media">
+                            <img src="assets/Desktop_Icons/Social_Media.gif" alt="Social Media Icon">
+                            <div>
+                                <span class="xp-startmenu-label">Social Media</span>
+                                <span class="xp-startmenu-desc">Links to my socials. Access my LinkTree for more!</span>
+                            </div>
+                        </li>
+                        <li data-app="Adopt a Kitty">
+                            <img src="assets/Desktop_Icons/Adopt_a_Kitty.png" alt="Adopt a Kitty Icon">
+                            <div>
+                                <span class="xp-startmenu-label">Adopt a Kitty</span>
+                                <span class="xp-startmenu-desc">Adopt a virtual cat!</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Bottom Row -->
+                <div class="xp-startmenu-bottom">
+                    <button class="xp-startmenu-btn">
+                        <img src="assets/Start_Menu_Buttons/key-log-icon.png" alt="Log Off" class="xp-startmenu-btnicon">
+                        Log Off
+                    </button>
+                    <button class="xp-startmenu-btn">
+                        <img src="assets/Start_Menu_Buttons/shutdown-icon.png" alt="Turn Off" class="xp-startmenu-btnicon">
+                        Turn Off Computer
+                    </button>
+                </div>
+            </div>
         </div>
 
         <template id="window-template">
