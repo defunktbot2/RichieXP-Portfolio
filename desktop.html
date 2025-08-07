@@ -105,11 +105,11 @@
                 </div>
                 <!-- Bottom Row -->
                 <div class="xp-startmenu-bottom">
-                    <button class="xp-startmenu-btn">
+                    <button class="xp-startmenu-btn" id="logoff-btn">
                         <img src="assets/Start_Menu_Buttons/key-log-icon.png" alt="Log Off" class="xp-startmenu-btnicon">
                         Log Off
                     </button>
-                    <button class="xp-startmenu-btn">
+                    <button class="xp-startmenu-btn" id="shutdown-btn">
                         <img src="assets/Start_Menu_Buttons/shutdown-icon.png" alt="Turn Off" class="xp-startmenu-btnicon">
                         Turn Off Computer
                     </button>
@@ -222,4 +222,23 @@
     </div>
 </body>
 
+<script>
+// Start menu button functionality
+document.addEventListener('DOMContentLoaded', function() {
+  var logoffBtn = document.getElementById('logoff-btn');
+  var shutdownBtn = document.getElementById('shutdown-btn');
+  if (logoffBtn) {
+    logoffBtn.addEventListener('click', function() {
+      // Simulate going to user select screen (user.html or similar)
+      window.location.href = 'user.html';
+    });
+  }
+  if (shutdownBtn) {
+    shutdownBtn.addEventListener('click', function() {
+      // Simulate going to boot screen or index
+      window.location.href = 'index.html';
+    });
+  }
+});
+</script>
 </html>
