@@ -1,3 +1,21 @@
+/* Make Adopt a Kitty images responsive to window width */
+.adopt-kitty-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.responsive-kitty {
+    width: 100% !important;
+    max-width: 900px !important;
+    min-width: 200px;
+    height: auto !important;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 8px;
+}
 /* Import Fonts */
 @font-face {
     font-family: "Helvetica BlackItalic";
@@ -560,6 +578,13 @@ p.credit {
     font-size: 16px;
     font-weight: bold;
     white-space: no wrap;
+    padding-bottom: 20px;
+}
+
+/* Adopt a Kitty */
+.kitty-photo {
+    margin: 10px;
+    border-radius: 8px;
 }
 
 /* Media Queries for Mobile */
