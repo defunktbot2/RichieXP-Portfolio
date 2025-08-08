@@ -149,16 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
             activeWindow = windowElement;
             activeWindow.style.zIndex = ++zIndexCounter;
 
-            const onMouseMove = (e) => {
+            function onMouseMove(e) {
                 activeWindow.style.left = (e.clientX - offsetX) + 'px';
                 activeWindow.style.top = (e.clientY - offsetY) + 'px';
-            };
+            }
 
-            const onMouseUp = () => {
+            function onMouseUp(e) {
                 document.removeEventListener('mousemove', onMouseMove);
                 document.removeEventListener('mouseup', onMouseUp);
                 activeWindow = null;
-            };
+            }
 
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
@@ -177,16 +177,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         maximizeButton.addEventListener('click', () => {
             const isMaximized = windowElement.classList.toggle('maximized');
+            function isMobileDevice() {
+                return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            }
             if (isMaximized) {
                 windowElement.style.position = 'fixed';
-                windowElement.style.top = '0';
                 windowElement.style.left = '0';
-                windowElement.style.width = '100vw';
-                windowElement.style.height = 'calc(100vh - 40px)';
+                windowElement.style.margin = '0';
+                windowElement.style.padding = '0';
+                windowElement.style.borderRadius = '0';
+                windowElement.style.zIndex = '1001';
+                if (isMobileDevice()) {
+                    windowElement.style.top = '0';
+                    windowElement.style.width = '100vw';
+                    windowElement.style.height = '100vh';
+                } else {
+                    windowElement.style.top = '0';
+                    windowElement.style.width = '100vw';
+                    windowElement.style.height = 'calc(100vh - 40px)';
+                }
             } else {
                 windowElement.style.width = '300px';
                 windowElement.style.height = '200px';
                 windowElement.style.position = '';
+                windowElement.style.top = '';
+                windowElement.style.left = '';
+                windowElement.style.margin = '';
+                windowElement.style.padding = '';
+                windowElement.style.borderRadius = '';
+                windowElement.style.zIndex = '';
             }
         });
 
@@ -203,8 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle clicks on menu items
     startMenu.addEventListener('click', (e) => {
-        if (e.target.tagName === 'LI') {
-            const appId = e.target.dataset.app;
+        // Find the closest <li> with a data-app attribute
+        let li = e.target.closest('li[data-app]');
+        if (li && startMenu.contains(li)) {
+            const appId = li.dataset.app;
             let window = document.querySelector(`.window[data-app="${appId}"]`);
             if (!window) {
                 window = createWindow(appId);
@@ -249,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('boot-screen').style.display = 'none';
             // Redirect or show the main content here
             // Example: window.location.href = 'main.html';
-            alert('Welcome to the site!');
         }, 5000); // Match this duration with your animation
     };
 
