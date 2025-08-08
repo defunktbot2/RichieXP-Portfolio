@@ -2,6 +2,91 @@
 <html lang="en">
 
 <head>
+    <script>
+        // Mobile alert logic
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (isMobileDevice()) {
+                setTimeout(function() {
+                    var modal = document.getElementById('mobile-alert-modal');
+                    if (modal) {
+                        modal.style.display = 'block';
+                        setTimeout(function() {
+                            modal.style.display = 'none';
+                        }, 6000);
+                    }
+                }, 3000);
+            }
+        });
+        function closeMobileAlert() {
+            var modal = document.getElementById('mobile-alert-modal');
+            if (modal) modal.style.display = 'none';
+        }
+    </script>
+    <style>
+        /* Mobile Alert Bubble */
+        #mobile-alert-modal {
+            display: none;
+            position: fixed;
+            right: 1.5rem;
+            left: 1.5rem;
+            bottom: 3.5rem;
+            z-index: 9999;
+            border: 1px solid #000;
+            background: #fffde1;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #222;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            padding: 18px 36px 18px 18px;
+            max-width: 350px;
+            margin: 0 auto;
+            transition: opacity 1s;
+        }
+        #mobile-alert-modal .modal-close {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 3px;
+            background: transparent;
+            cursor: pointer;
+        }
+        #mobile-alert-modal .modal-close::before,
+        #mobile-alert-modal .modal-close::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 3px;
+            width: 2px;
+            height: 12px;
+            background: #aaa;
+        }
+        #mobile-alert-modal .modal-close::before {
+            transform: rotate(45deg);
+        }
+        #mobile-alert-modal .modal-close::after {
+            transform: rotate(-45deg);
+        }
+        #mobile-alert-modal .modal-close:hover {
+            background: #ffa90c;
+            border-color: #fff;
+        }
+        #mobile-alert-modal .modal-close:hover::before,
+        #mobile-alert-modal .modal-close:hover::after {
+            background: #fff;
+        }
+        #mobile-alert-modal .bubble-icon {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RichieXP Portfolio | Richie Galacgac</title>
@@ -13,6 +98,14 @@
 </head>
 
 <body>
+    <div id="mobile-alert-modal">
+        <button class="modal-close" onclick="closeMobileAlert()" aria-label="Close"></button>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+            <img class="bubble-icon" src="assets/Desktop_Icons/About.png" alt="info" />
+            <span style="font-weight: bold;">This website is best used and viewed on a computer.</span>
+        </div>
+        <div>Some features may not display or function correctly on mobile browsers.</div>
+    </div>
     <div id="desktop">
         <div id="taskbar">
             <button id="start-button"></button>
@@ -53,7 +146,7 @@
             <div class="xp-startmenu">
                 <!-- Top User Row -->
                 <div class="xp-startmenu-user">
-                    <img src="/assets/Profile_Picture.png" alt="Profile" class="xp-startmenu-userpic">
+                    <img src="assets/Profile_Picture.png" alt="Profile" class="xp-startmenu-userpic">
                     <span class="xp-startmenu-username">Richie Galacgac</span>
                 </div>
                 <!-- Main Menu Row -->

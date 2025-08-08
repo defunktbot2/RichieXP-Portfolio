@@ -14,6 +14,27 @@
                 window.location.href = 'desktop.html'; // Redirect after sound plays
             }, 2000); // Redirect after 2 seconds
         }
+        // Mobile alert logic
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (isMobileDevice()) {
+                setTimeout(function() {
+                    var modal = document.getElementById('mobile-alert-modal');
+                    if (modal) {
+                        modal.style.display = 'block';
+                        setTimeout(function() {
+                            modal.style.display = 'none';
+                        }, 6000);
+                    }
+                }, 3000);
+            }
+        });
+        function closeMobileAlert() {
+            var modal = document.getElementById('mobile-alert-modal');
+            if (modal) modal.style.display = 'none';
+        }
     </script>
     <style>
         /* Login Screen */
@@ -31,6 +52,105 @@
             background-image: radial-gradient(circle at top left, #7696e1 5%, #567dda 30%);
             background-repeat: no-repeat;
             /* Prevent the gradient from repeating */
+        }
+        @media (max-width: 768px) {
+            #login-screen {
+                padding: 0 0 0 0;
+                min-height: 100vh;
+                height: 100dvh;
+            }
+            .top-bar, .bottom-bar {
+                font-size: 14px;
+                height: 60px;
+                padding: 0 6px;
+            }
+            .content {
+                flex-direction: column;
+                padding: 0 2vw;
+            }
+            .logo-container {
+                margin: 0 0 12px 0;
+            }
+            .logo img {
+                max-width: 70vw !important;
+                height: auto !important;
+            }
+            .vertical-line {
+                display: none;
+            }
+            .profile-box {
+                max-width: 90vw;
+                padding: 10px;
+                margin: 0 auto;
+            }
+            .profile-pic {
+                width: 60px !important;
+                height: 60px !important;
+                margin-right: 8px;
+            }
+            .username {
+                font-size: 18px;
+            }
+        }
+        /* Mobile Alert Bubble */
+        #mobile-alert-modal {
+            display: none;
+            position: fixed;
+            right: 1.5rem;
+            left: 1.5rem;
+            bottom: 3.5rem;
+            z-index: 9999;
+            border: 1px solid #000;
+            background: #fffde1;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #222;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            padding: 18px 36px 18px 18px;
+            max-width: 350px;
+            margin: 0 auto;
+            transition: opacity 1s;
+        }
+        #mobile-alert-modal .modal-close {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 3px;
+            background: transparent;
+            cursor: pointer;
+        }
+        #mobile-alert-modal .modal-close::before,
+        #mobile-alert-modal .modal-close::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 3px;
+            width: 2px;
+            height: 12px;
+            background: #aaa;
+        }
+        #mobile-alert-modal .modal-close::before {
+            transform: rotate(45deg);
+        }
+        #mobile-alert-modal .modal-close::after {
+            transform: rotate(-45deg);
+        }
+        #mobile-alert-modal .modal-close:hover {
+            background: #ffa90c;
+            border-color: #fff;
+        }
+        #mobile-alert-modal .modal-close:hover::before,
+        #mobile-alert-modal .modal-close:hover::after {
+            background: #fff;
+        }
+        #mobile-alert-modal .bubble-icon {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-right: 8px;
         }
 
         .top-bar {
@@ -181,6 +301,14 @@
 </head>
 <body>
     <audio id="boot-sound" src="assets/tada.mp3" preload="auto"></audio>
+    <div id="mobile-alert-modal">
+        <button class="modal-close" onclick="closeMobileAlert()" aria-label="Close"></button>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+            <img class="bubble-icon" src="assets/Desktop_Icons/About.png" alt="info" />
+            <span style="font-weight: bold;">This website is best used and viewed on a computer.</span>
+        </div>
+        <div>Some features may not display or function correctly on mobile browsers.</div>
+    </div>
     <div id="login-screen">
         <div class="top-bar">RichieXP Portfolio</div>
         <div class="divider"></div>
@@ -189,7 +317,7 @@
                 <div class="logo">
                     <img src="assets/Logo.png" alt="Logo" style="max-width: 350px; height: auto;">
                 </div>
-                <div>Click on my username to continue exploring.</div>
+                <div>Click on my username to continue.</div>
             </div>
             <div class="vertical-line"></div> <!-- Vertical line -->
             <div class="profile-box" onclick="playSound()">

@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Minimal updateTaskbar implementation to prevent errors
+    function updateTaskbar() {
+        // Optionally, update open windows in the taskbar here
+    }
     const desktop = document.getElementById('desktop');
     const taskbar = document.getElementById('taskbar');
     const openWindows = document.querySelector('.open-windows');
@@ -37,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Window Management ---
     function createWindow(appId) {
+
         let windowTemplateToUse;
         if (appId === 'Social Media') {
             windowTemplateToUse = document.getElementById('social-media-template');
@@ -50,53 +55,69 @@ document.addEventListener('DOMContentLoaded', () => {
         const windowElement = windowClone.querySelector('.window');
         windowElement.dataset.app = appId;
 
+        // Maximize window on mobile
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        if (isMobileDevice()) {
+            windowElement.style.position = 'fixed';
+            windowElement.style.top = '40px'; // below title bar
+            windowElement.style.left = '0';
+            windowElement.style.width = '100vw';
+            windowElement.style.height = 'calc(100vh - 40px)'; // minus taskbar
+            windowElement.style.maxWidth = '100vw';
+            windowElement.style.maxHeight = 'calc(100vh - 40px)';
+            windowElement.style.margin = '0';
+            windowElement.style.borderRadius = '0';
+            windowElement.style.zIndex = '1001';
+        } else {
+            // Set fixed initial window position for desktop
+            windowElement.style.left = '150px';
+            windowElement.style.top = '75px';
+            // Resize Logic (desktop only)
+            const resizeHandle = document.createElement('div');
+            resizeHandle.classList.add('resize-handle');
+            windowElement.appendChild(resizeHandle);
+
+            const minWidth = 270;
+            const minHeight = 100;
+
+            resizeHandle.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+
+                const startWidth = windowElement.offsetWidth;
+                const startHeight = windowElement.offsetHeight;
+                const startX = e.clientX;
+                const startY = e.clientY;
+
+                const onMouseMove = (e) => {
+                    let newWidth = startWidth + (e.clientX - startX);
+                    let newHeight = startHeight + (e.clientY - startY);
+
+                    newWidth = Math.max(newWidth, minWidth);
+                    newHeight = Math.max(newHeight, minHeight);
+
+                    windowElement.style.width = `${newWidth}px`;
+                    windowElement.style.height = `${newHeight}px`;
+                };
+
+                const onMouseUp = () => {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+        }
+
+        // Set window title and content based on appId
         const header = windowElement.querySelector('.title-bar-text');
         const content = windowElement.querySelector('.window-body');
         const closeButton = windowElement.querySelector('button[aria-label="Close"]');
         const minimizeButton = windowElement.querySelector('button[aria-label="Minimize"]');
         const maximizeButton = windowElement.querySelector('button[aria-label="Maximize"]');
 
-        // Resize Logic
-        const resizeHandle = document.createElement('div');
-        resizeHandle.classList.add('resize-handle');
-        windowElement.appendChild(resizeHandle);
-
-        const minWidth = 270;
-        const minHeight = 100;
-
-        resizeHandle.addEventListener('mousedown', (e) => {
-            e.preventDefault();
-
-            const startWidth = windowElement.offsetWidth;
-            const startHeight = windowElement.offsetHeight;
-            const startX = e.clientX;
-            const startY = e.clientY;
-
-            const onMouseMove = (e) => {
-                let newWidth = startWidth + (e.clientX - startX);
-                let newHeight = startHeight + (e.clientY - startY);
-
-                newWidth = Math.max(newWidth, minWidth);
-                newHeight = Math.max(newHeight, minHeight);
-
-                windowElement.style.width = `${newWidth}px`;
-                windowElement.style.height = `${newHeight}px`;
-            };
-
-            const onMouseUp = () => {
-                document.removeEventListener('mousemove', onMouseMove);
-                document.removeEventListener('mouseup', onMouseUp);
-            };
-
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-        });
-
-        // Set fixed initial window position
-        windowElement.style.left = '150px';
-        windowElement.style.top = '75px';
-
-        // Set window title and content based on appId
         header.textContent = appId.charAt(0).toUpperCase() + appId.slice(1);
 
         if (appId === 'About Me') {
@@ -168,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 windowElement.style.position = '';
             }
         });
+
+        return windowElement;
     }
 
     // --- Start Menu ---
