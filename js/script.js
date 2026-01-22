@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             content.innerHTML = `<h1>My Projects</h1><p>This feature is still under development. Please check back later!</p><br><ul><li><strong>Project 1:</strong> <a href="https://link-to-your-project1.com" target="_blank">Description of Project 1</a></li></ul>`;
         } else if (appId === 'Resume') {
             header.textContent = 'Resume';
-            content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1tPKvMtmFAoaXM1KVFP3Vl3FW029WCeZW/preview" width="100%" height="85%" allow="autoplay"></iframe><a href="https://drive.google.com/uc?export=download&id=18cuqADpP0aOFvfw3pHAZd9fBIreWlONc"><button class="download">DOWNLOAD</button></a>`;
+            content.innerHTML = `<h1>Resume</h1><iframe src="https://drive.google.com/file/d/1tPKvMtmFAoaXM1KVFP3Vl3FW029WCeZW/preview" width="100%" height="85%" allow="autoplay"></iframe><a href="https://drive.google.com/uc?export=download&id=1tPKvMtmFAoaXM1KVFP3Vl3FW029WCeZW"><button class="download">DOWNLOAD</button></a>`;
         }
 
         desktop.appendChild(windowElement);
