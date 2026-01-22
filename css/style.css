@@ -73,7 +73,166 @@ body {
     color: #000;
     cursor: url('assets/cursor.png'), auto;
     /* Custom cursor */
-}
+    }
+
+    /* XP Outlook Express Contact Form Styles */
+    .xp-contact-window {
+        background: #f3f3f3;
+        border: 2px solid #2356a8;
+        box-shadow: 0 2px 8px #b0b0b0;
+        font-family: "Tahoma", Arial, sans-serif;
+    }
+    .xp-toolbar {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(180deg, #fdf6e3 0%, #e7e3d6 100%);
+        border-bottom: 1px solid #d1cfc7;
+        padding: 4px 8px;
+        gap: 2px;
+    }
+    .xp-toolbar-btn {
+        background: none;
+        border: none;
+        margin: 0 2px;
+        padding: 2px;
+        cursor: pointer;
+        height: 32px;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .xp-toolbar-btn img {
+        width: 24px;
+        height: 24px;
+    }
+    .xp-toolbar-sep {
+        width: 1px;
+        height: 24px;
+        background: #bdbdbd;
+        margin: 0 6px;
+    }
+    .xp-contact-form {
+        padding: 12px 18px 0 18px;
+        background: #fff;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        font-size: 13px;
+    }
+    .xp-contact-fields {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        grid-row-gap: 6px;
+        grid-column-gap: 8px;
+        margin-bottom: 10px;
+    }
+    .xp-contact-fields label {
+        text-align: right;
+        padding-right: 6px;
+        color: #2356a8;
+        font-weight: bold;
+        font-size: 13px;
+        align-self: center;
+    }
+    .xp-contact-fields input {
+        font-family: "Tahoma", Arial, sans-serif;
+        font-size: 13px;
+        border: 1px solid #bdbdbd;
+        border-radius: 0;
+        padding: 2px 6px;
+        background: #f9f9f9;
+        color: #222;
+        outline: none;
+    }
+    .xp-contact-message {
+        width: 100%;
+        min-height: 120px;
+        border: 1px solid #bdbdbd;
+        border-radius: 0;
+        padding: 6px;
+        font-family: "Tahoma", Arial, sans-serif;
+        font-size: 13px;
+        background: #fff;
+        color: #222;
+        margin-bottom: 8px;
+        resize: vertical;
+    }
+    .xp-contact-bottom-text {
+        font-size: 12px;
+        color: #2356a8;
+        font-style: italic;
+        margin-top: 4px;
+        margin-bottom: 8px;
+        text-align: left;
+    }
+    }
+
+    /* XP Contact Form Styles */
+    .contact-form {
+        font-family: "Tahoma", Arial, sans-serif;
+        background: transparent;
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        width: auto;
+        margin: 0;
+    }
+    .form-row {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .contact-form label {
+        font-size: 13px;
+        font-weight: normal;
+        color: #000;
+        margin-bottom: 2px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        font-family: "Tahoma", Arial, sans-serif;
+        font-size: 13px;
+        border: 1px solid #7a7a7a;
+        border-radius: 0;
+        padding: 2px 4px;
+        margin-bottom: 2px;
+        background: #fff;
+        color: #000;
+        outline: none;
+    }
+    .contact-form textarea {
+        min-height: 80px;
+        resize: vertical;
+    }
+    .contact-form button {
+        font-family: "Tahoma", Arial, sans-serif;
+        font-size: 13px;
+        background: #ece9d8;
+        border: 1px solid #7a7a7a;
+        border-radius: 0;
+        color: #000;
+        padding: 2px 12px;
+        cursor: pointer;
+        box-shadow: none;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .contact-form button:disabled {
+        background: #ece9d8;
+        color: #aaa;
+        cursor: not-allowed;
+    }
+    .contact-form .success {
+        color: #008000;
+        font-size: 12px;
+        margin-top: 2px;
+    }
+    .contact-form .error {
+        color: #c00;
+        font-size: 12px;
+        margin-top: 2px;
+    }
 
 /* Maximized window covers everything except the taskbar */
 

@@ -211,6 +211,44 @@
             </div>
         </div>
 
+        <template id="contact-window-template">
+            <div class="window xp-contact-window" style="width: 700px; min-height: 420px;" data-app="Contact">
+                <div class="title-bar">
+                    <span class="title-bar-text">Contact me</span>
+                    <div class="window-controls">
+                        <button aria-label="Minimize">_</button>
+                        <button aria-label="Maximize">[ ]</button>
+                        <button aria-label="Close">X</button>
+                    </div>
+                </div>
+                <div class="xp-toolbar">
+                    <button title="Send" class="xp-toolbar-btn"><img src="assets/Contact_Icons/send.png" alt="Send"></button>
+                    <button title="Cut" class="xp-toolbar-btn"><img src="assets/Contact_Icons/cut.png" alt="Cut"></button>
+                    <button title="Copy" class="xp-toolbar-btn"><img src="assets/Contact_Icons/copy.png" alt="Copy"></button>
+                    <button title="Paste" class="xp-toolbar-btn"><img src="assets/Contact_Icons/paste.png" alt="Paste"></button>
+                    <button title="Undo" class="xp-toolbar-btn"><img src="assets/Contact_Icons/undo.png" alt="Undo"></button>
+                    <span class="xp-toolbar-sep"></span>
+                    <button title="Check" class="xp-toolbar-btn"><img src="assets/Contact_Icons/check.png" alt="Check"></button>
+                    <button title="Spelling" class="xp-toolbar-btn"><img src="assets/Contact_Icons/spelling.png" alt="Spelling"></button>
+                    <span class="xp-toolbar-sep"></span>
+                    <button title="Attach" class="xp-toolbar-btn"><img src="assets/Contact_Icons/attach.png" alt="Attach"></button>
+                    <button title="Priority" class="xp-toolbar-btn"><img src="assets/Contact_Icons/priority.png" alt="Priority"></button>
+                    <button title="Sign" class="xp-toolbar-btn"><img src="assets/Contact_Icons/sign.png" alt="Sign"></button>
+                </div>
+                <form id="contact-form" class="xp-contact-form">
+                    <div class="xp-contact-fields">
+                        <label for="toEmail">To:</label>
+                        <input type="email" id="toEmail" value="" placeholder="your@email.com" required>
+                        <label for="fromEmail">From:</label>
+                        <input type="email" id="fromEmail" value="" placeholder="your@email.com" required>
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" value="" placeholder="" required>
+                    </div>
+                    <textarea id="message" class="xp-contact-message" placeholder="Message here..." required></textarea>
+                    <div class="xp-contact-bottom-text">If you'd like to talk about a project, or just have a chat, leave me a message and I'll get back to you as soon as possible!</div>
+                </form>
+            </div>
+        </template>
         <template id="window-template">
             <div class="window" style="width: 700px; height: auto;">
                 <div class="title-bar">
